@@ -12,37 +12,49 @@ namespace Triangle
         private int b;
         private int c;
 
+        private double p;
+        private double s;
+
         public Triangle(int a, int b, int c)
         {
             this.a = a;
             this.b = b;
             this.c = c;
+
+            p = this.CalcPerimeter();
+            s = this.CalcArea();
         }
 
-        public bool Check()
+        public bool isTriangle()
         {
-            if (a + b > c && a + c > b && b + c > a)
-                return true;
-            else
-                return false;
+            return ((a + b > c) && (a + c > b) && (b + c > a));
         }
 
-        public int Perimeter()
+        private int CalcPerimeter()
         {
-            int p= a + b + c;
+            int p = a + b + c;
             return p;
         }
 
-        public double Area()
+        public double getPerimeter() 
+        {
+            return p;
+        }
+
+        private double CalcArea()
         {
             int half = (a + b + c) / 2;
             double s = Math.Sqrt(half * (half - a) * (half - b) * (half-c));
             return s;
         }
 
-        public void Output(int p, double s)
+        public double getArea() {
+            return s;
+        }
+
+        public override string ToString() 
         {
-            Console.WriteLine("Треугольник со сторонами {0}, {1}, {2} имеет периметр {3} и площадь {4} ", a, b, c, p, s);
+            return "Треугольник со сторонами " + a + ", " + b + ", " + c + " имеет периметр " + p + " и площадь " + s;
         }
     }
 }
